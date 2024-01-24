@@ -8,6 +8,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
     );
+
+// Read the BaseUrl from configuration
+var baseUrl = builder.Configuration.GetSection("ApplicationSettings:BaseUrl").Value;
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
